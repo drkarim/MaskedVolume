@@ -1,26 +1,21 @@
-# Segmentation for atrial wall from CT Angiography 
-A simple segmentation method that segments the atrial wall using iterative dilation and intensity thresholding. It requires the intensity distribution information of the ventricular myocardium. 
+# Volume under a 3D mask 
+Computes the total volume of pixels in a binary or labelled image as indicated by a mask image. Labelled image may be labelled with any number of labels indicated by an integer 1,2,3, etc. Mask image also could have any number of labels as this label can be specified.
 
 ## Usage 
 The usage is through command line: 
 ```
-mirtk evaluate-la-wall <input_img> <la_mask> <output_img> <intensity_t1> <intensity_t2> <iterations_n>
+mirtk evaluate-la-wall -i1 <labelled image> -i2 <mask image> -t1 <label in labelled image> -t2 <label in mask image> -o <output file optional> 
 ```
 
 ## Image requirements 
-Note that the program assumes that the input images are CTA (contrast-enhanced angiography). 
-
-This program outputs the la wall segmented from endocardial segmentation based on intensity values [t1,t2] and dilation with n steps. 
-
-The program expects a binary mask to be provided as an input parameter ```<la_mask>```, where ```1``` is set as endocardium. This is the endocardial segmentation of the atrial blood pool. 
-
+This program outputs the total volume in mm^3 by obtaining the image resloution. 
 All input image files are either NifTII or GIPL or HDR Analyze. 
 
 ## Parameters 
-the ```<intensity_t1>``` and ```<intensity_t2>``` are intensity ranges manually selected for the atrial wall. The values ```t1``` and ```t2``` are ideally obtained from ventricular myocardium, +/- 2-standard deviations of the mean of an intensity sample from that region. 
+the ```<labelled image>``` and ```<mask image>``` images 
 
 ## Output 
-The program outputs a binary image with the wall labelled sequentially at each iterative step as 1, 2 and so on. 
+The program optionally accepts a filename to which it can write the volume. 
 
 ## Author 
 ```
