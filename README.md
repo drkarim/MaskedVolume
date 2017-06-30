@@ -4,18 +4,21 @@ Computes the total volume of pixels in a binary or labelled image as indicated b
 ## Usage 
 The usage is through command line: 
 ```
-mirtk evaluate-la-wall -i1 <labelled image> -i2 <mask image> -t1 <label in labelled image> -t2 <label in mask image> -o <output file optional> 
+mirtk evaluate-la-wall -i1 <mask image> -t1 <label in mask image> -o <output file optional> 
 ```
 
 ## Image requirements 
-This program outputs the total volume in mm^3 by obtaining the image resloution. 
+This program outputs the total number of pixels and volume in mm^3 in label ```t1``` by obtaining the image resloution. 
 All input image files are either NifTII or GIPL or HDR Analyze. 
 
 ## Parameters 
-the ```<labelled image>``` and ```<mask image>``` images 
+the ```<mask image>``` is an image with labels 1,2,3 and so on. the ```<label in mask image>``` specifies which label you wish to calculate the volume for
 
 ## Output 
 The program optionally accepts a filename to which it can write the volume. 
+
+## Testing
+Not tested fully, only with a few images and comparison to ```Volume and Statistics``` option in ITK-Snap was OK. 
 
 ## Author 
 ```
